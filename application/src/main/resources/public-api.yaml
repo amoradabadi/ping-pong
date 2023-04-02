@@ -1,0 +1,30 @@
+openapi: 3.0.3
+info:
+  title: Public Ping-Pong Server
+  version: 1.0.0
+paths:
+  /ping:
+    get:
+      operationId: ping
+      tags:
+        - ping
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
